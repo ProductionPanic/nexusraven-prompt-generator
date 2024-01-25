@@ -29,7 +29,14 @@
     }
 
     const rerender = ()=> {
-        functions = [...functions];
+        functions = functions.map(f => {
+            f.functionName = f.functionName.replace(" ", "_");
+            f.parameters = f.parameters.map(p => {
+                p.name = p.name.replace(" ", "_");
+                return p;
+            });
+            return f;
+        });
         localStorage.setItem('functions', JSON.stringify(functions));
     }
 
