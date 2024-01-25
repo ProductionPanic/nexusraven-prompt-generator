@@ -13,6 +13,10 @@
 
     let output = "";
 
+    $:if(newFunctionName.includes(" ")) {
+        newFunctionName = newFunctionName.replace(" ", "_");
+    }
+
     let last_output = "";
     $:if(functions) {
         output = parseNexusRavenFunctions(functions);
